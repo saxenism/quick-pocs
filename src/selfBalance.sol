@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
+//////////////
+// This contract is in response to the Question 3 from the **Hard** Section
+// https://www.rareskills.io/post/solidity-interview-questions
+// Shoutout to Jeff and Rareskills
+//////////////
+
 contract AssemblyBalanceCheck {
     function checkBalanceSolidity() public view returns (uint256 balance) {
         balance = address(this).balance;
