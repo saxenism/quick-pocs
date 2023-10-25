@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.21;
 
-import {AssemblyBalanceCheck} from "src/selfBalance.sol";
+import {AssemblyBalanceCheck} from "src/AssemblyBalanceCheck.sol";
 import "forge-std/Test.sol";
 
-contract SelfBalanceTest is AssemblyBalanceCheck, Test {
+contract AssemblyBalanceCheckTest is AssemblyBalanceCheck, Test {
     AssemblyBalanceCheck assemblyBalanceCheck;
 
     function setUp() public {
