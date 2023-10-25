@@ -1,66 +1,13 @@
-## Foundry
+# Quick POCs
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repository contains all my small experiments regarding Solidity and the EVM in general, leveragaing the Foundry framework in the process.
 
-Foundry consists of:
+## Quick Articles
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+### 1. Function Selectors and Gas
 
-## Documentation
+A function selector -> `bytes4(keccak256("function_signature"))`. 
 
-https://book.getfoundry.sh/
+EVM utilises a lookup table and searches for the function being called, linearly in that table. In the table, the function selectors are arranged linearly from lower hex value to higher hex values. So, if a function in your contract is used regularly and you name it in a way such that it's function selector remains towards the top, you can save gas (function is found in the 1st try rather than the nth try).
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+However, if in a contract the number of functions are more than 4, EVM uses binary search for function calls.
