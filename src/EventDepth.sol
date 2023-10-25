@@ -16,16 +16,54 @@ Follow the discussion on X: https://x.com/saxenism/status/1716696062755565778?s=
 ///////
 
 contract EventDepth {
-    event Foo(uint8 indexed,uint8 indexed,uint8 indexed,uint8 indexed,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8) anonymous;
-    event Foo2(uint8 indexed,uint8 indexed,uint8 indexed,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8);
+    event Foo(
+        uint8 indexed,
+        uint8 indexed,
+        uint8 indexed,
+        uint8 indexed,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8
+    ) anonymous;
+    event Foo2(
+        uint8 indexed,
+        uint8 indexed,
+        uint8 indexed,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8,
+        uint8
+    );
 
     function emitEvent() public {
         emit Foo(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
     }
 
-    function viewEventSelector() public pure returns(bytes32 eventSelector, bool isEqual) {
+    function viewEventSelector() public pure returns (bytes32 eventSelector, bool isEqual) {
         eventSelector = Foo2.selector;
-        isEqual = (eventSelector == keccak256("Foo2(uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8)"));
+        isEqual = (
+            eventSelector
+                == keccak256(
+                    "Foo2(uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8)"
+                )
+        );
     }
 
     //////////
