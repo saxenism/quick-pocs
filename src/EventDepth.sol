@@ -27,4 +27,12 @@ contract EventDepth {
         eventSelector = Foo2.selector;
         isEqual = (eventSelector == keccak256("Foo2(uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8,uint8)"));
     }
+
+    //////////
+    // This function would not compile since Foo is an anonymous event and therefore
+    // does not have a selector
+    //////////
+    // function viewEventSelectorAnonymous() public pure returns(bytes32 eventSelector) {
+    //     eventSelector = Foo.selector;
+    // }
 }
