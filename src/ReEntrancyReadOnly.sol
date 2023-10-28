@@ -28,5 +28,12 @@ contract ReadOnlyReentrancy {
 // Explanation of the read-only reentrancy
 //////////////////////////////////////////////
 /**
- * The idea is nothing crazy, it's actually pretty simple.
+ *  The idea is nothing crazy, it's actually pretty simple.
+ *     If we consider that this contract to be the core contract for a protocol
+ *     and then some other protocol builds on top of this and depends upon the `isAllowedToWithdraw` function
+ *     to carry out some operation on their own protocols for a user, then they can be blindsided.
+ *     How?
+ *     Well, the *attacker* would call `withdraw` with an `amount` that might make the `not allowed to withdraw`, but since they have
+ *     control over the execution flow when calling the function `withdraw` and that time their balance hasn't been updated, they can call the
+ *     function that queries `isAllowedToWithdraw` and do something that they are now not eligible to do.
  */
